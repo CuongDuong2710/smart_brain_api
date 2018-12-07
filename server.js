@@ -28,7 +28,7 @@ const database = {
 }
 
 app.get('/', (req, res) => {
-  res.send('this is working')
+  res.json(database.users)
 })
 
 app.post('/signin', (req, res) => {
@@ -38,6 +38,21 @@ app.post('/signin', (req, res) => {
     } else {
         res.status(400).json('error logging in')
     }
+})
+
+app.post('/register', (req, res) => {
+  const { email, name, password } = req.body
+  database.users.push(
+    {
+      id: 125,
+      name,
+      email,
+      password,
+      entries: 0,
+      joined: new Date()
+    }
+  )
+  res.json(database.users[database.users.length-1])
 })
 
 app.listen(3000, () => {
@@ -52,3 +67,14 @@ app.listen(3000, () => {
 /image --> PUT --> user
 
 */
+
+/* register and then get list, we have three users
+{
+    "id": 125,
+    "name": "Anne",
+    "email": "anne@gmail.com",
+    "password": "root",
+    "entries": 0,
+    "joined": "2018-12-07T07:37:15.535Z"
+}
+ */
