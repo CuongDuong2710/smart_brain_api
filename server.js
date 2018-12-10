@@ -56,13 +56,24 @@ app.post('/register', (req, res) => {
 })
 
 app.get('/profile/:id', (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params
   database.users.forEach(user => {
-    if (user.id == id) {
-      return res.json(user)
+    if (user.id === id) {
+      res.json(user)
     }
   })
-  return res.status(400).json('no such user')
+  res.status(400).json('no such user')
+})
+
+app.put('/image', (req, res) => {
+  const { id } = req.body
+  database.users.forEach(user => {
+    if (user.id === id) {
+      user.entries++;
+      res.json(user.entries)
+    }
+  })
+  res.status(400).json('no such user')
 })
 
 app.listen(3000, () => {
