@@ -1,9 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt-nodejs')
+const cors = require('cors')
 
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.json())
 
 const database = {
@@ -13,6 +15,7 @@ const database = {
       id: 123,
       name: 'John',
       email: 'john@gmail.com',
+      password: 'root',
       entries: 0,
       joined: new Date()
     },
@@ -20,6 +23,7 @@ const database = {
       id: 124,
       name: 'James',
       email: 'james@gmail.com',
+      password: 'root',
       entries: 0,
       joined: new Date()
     }
@@ -105,3 +109,9 @@ app.listen(3000, () => {
     "joined": "2018-12-07T07:37:15.535Z"
 }
  */
+
+
+/* {
+	"email": "anne@gmail.com",
+	"password": "apples"
+} */
