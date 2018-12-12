@@ -12,7 +12,6 @@ const database = {
       id: 123,
       name: 'John',
       email: 'john@gmail.com',
-      password: 'root',
       entries: 0,
       joined: new Date()
     },
@@ -20,9 +19,15 @@ const database = {
       id: 124,
       name: 'James',
       email: 'james@gmail.com',
-      password: 'root',
       entries: 0,
       joined: new Date()
+    }
+  ],
+  login: [
+    {
+      id: '987',
+      hash: '',
+      email: 'john@gmail.com'
     }
   ]
 }
@@ -79,15 +84,6 @@ app.put('/image', (req, res) => {
 app.listen(3000, () => {
   console.log('app is running on port 3000')
 })
-
-/* 
-/ --> res = this is working
-/signIn --> POST = success/fail
-/register --> POST = user
-/profile/:userId --> GET = user
-/image --> PUT --> user
-
-*/
 
 /* register and then get list, we have three users
 {
