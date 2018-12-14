@@ -1,0 +1,25 @@
+http://www.postgresqltutorial.com/psql-commands/
+
+_ Connect database 'postgres' (2nd argument) under 'postgres' user (1st argument) -> enter password
+psql -U postgres postgres
+
+_ List available tables
+\dt
+
+_ List users and their roles
+\du
+
+_ Create database
+create database <database_name>;
+
+_ Switch connection to a new database
+\c <database_name>
+
+_ Create tables
+create table <table_name> (column_1 datatype, column_2 datatype, column_3 datatype)
+
+test=# SELECT * FROM users;
+ id | name |     email
+----+------+----------------
+  1 | john | john@gmail.com
+(1 row)
