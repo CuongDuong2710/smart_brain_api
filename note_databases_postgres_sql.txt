@@ -1,3 +1,4 @@
+-------- COMMANDS -----------
 http://www.postgresqltutorial.com/psql-commands/
 
 _ Connect database 'postgres' (2nd argument) under 'postgres' user (1st argument) -> enter password
@@ -15,11 +16,18 @@ create database <database_name>;
 _ Switch connection to a new database
 \c <database_name>
 
+-------- OPERATIONS -----------
+
+* Remember ';'
+
 _ Create tables
-create table <table_name> (column_1 datatype, column_2 datatype, column_3 datatype)
+create table <table_name> (column_1 datatype, column_2 datatype, column_3 datatype);
 
 test=# SELECT * FROM users;
  id | name |     email
 ----+------+----------------
   1 | john | john@gmail.com
 (1 row)
+
+_ Insert
+INSERT INTO table_name (column_1, column_2, column_3) VALUES (value_1, 'value_2', value_3);
