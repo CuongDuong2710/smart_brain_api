@@ -31,3 +31,35 @@ test=# SELECT * FROM users;
 
 _ Insert
 INSERT INTO table_name (column_1, column_2, column_3) VALUES (value_1, 'value_2', value_3);
+
+_ Alter
+ALTER TABLE table_name ADD column datatype;
+
+_ Update
+UPDATE table_name
+SET some_column = some_value
+WHERE some_column = some_value;
+
+_ Condition
+
+SELECT * FROM users WHERE name LIKE 'j%'; // start from 'j' character
+
+SELECT * FROM users WHERE name LIKE '%i'; // end by 'i' character
+
+_ Order By
+
+test=# SELECT * FROM users ORDER BY score DESC;
+ id |  name  |      email       | score
+----+--------+------------------+-------
+  3 | andrei | andrei@gmail.com |    67
+  1 | john   | john@gmail.com   |     9
+  2 | joe    | joe@gmail.com    |     7
+(3 rows)
+
+
+test=# SELECT * FROM users ORDER BY score ASC;
+ id |  name  |      email       | score
+----+--------+------------------+-------
+  2 | joe    | joe@gmail.com    |     7
+  1 | john   | john@gmail.com   |     9
+  3 | andrei | andrei@gmail.com |    67
