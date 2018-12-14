@@ -40,7 +40,7 @@ UPDATE table_name
 SET some_column = some_value
 WHERE some_column = some_value;
 
-_ Condition
+-------- CONDITIONS -----------
 
 SELECT * FROM users WHERE name LIKE 'j%'; // start from 'j' character
 
@@ -63,3 +63,11 @@ test=# SELECT * FROM users ORDER BY score ASC;
   2 | joe    | joe@gmail.com    |     7
   1 | john   | john@gmail.com   |     9
   3 | andrei | andrei@gmail.com |    67
+
+-------- FUNCTIONS -----------
+
+SELECT AVG(score) FROM users;
+
+SELECT SUM(score) FROM users;
+
+SELECT COUNT(name) FROM users;
