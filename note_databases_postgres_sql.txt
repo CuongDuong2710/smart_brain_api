@@ -90,4 +90,6 @@ SQL state: 23505
 
 SELECT * FROM users JOIN login ON users.name = login.name;
 
+DELETE FROM login WHERE name='Pop';
 
+DROP TABLE login;
