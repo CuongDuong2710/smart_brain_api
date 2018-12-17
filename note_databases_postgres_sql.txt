@@ -86,4 +86,8 @@ ERROR:  duplicate key value violates unique constraint "login_name_key"
 DETAIL:  Key (name)=(Titi) already exists.
 SQL state: 23505
 
+-------- JOIN -----------
+
+SELECT * FROM users JOIN login ON users.name = login.name;
+
 
