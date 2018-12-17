@@ -71,3 +71,19 @@ SELECT AVG(score) FROM users;
 SELECT SUM(score) FROM users;
 
 SELECT COUNT(name) FROM users;
+
+_ Create table LOGIN
+
+CREATE TABLE login (
+	ID serial NOT NULL PRIMARY KEY,
+	secret VARCHAR (100) NOT NULL,
+	name text UNIQUE NOT NULL
+)
+
+INSERT INTO login (secret, name) VALUES ('xyz', 'Titi')
+
+ERROR:  duplicate key value violates unique constraint "login_name_key"
+DETAIL:  Key (name)=(Titi) already exists.
+SQL state: 23505
+
+
