@@ -15,6 +15,7 @@ create database <database_name>;
 
 _ Switch connection to a new database
 \c <database_name>
+psql <database_name>
 
 -------- OPERATIONS -----------
 
@@ -93,3 +94,20 @@ SELECT * FROM users JOIN login ON users.name = login.name;
 DELETE FROM login WHERE name='Pop';
 
 DROP TABLE login;
+
+
+-------- SMART-BRAIN -----------
+
+CREATE TABLE users (
+	id serial PRIMARY KEY,
+	name VARCHAR(100),
+	email text UNIQUE NOT NULL,
+	entries BIGINT DEFAULT 0,
+	joined TIMESTAMP NOT NULL
+);
+
+CREATE TABLE login (
+	id serial PRIMARY KEY,
+	hash varchar(100) NOT NULL,
+	email text UNIQUE NOT NULL
+);
