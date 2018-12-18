@@ -4,22 +4,32 @@ const bcrypt = require('bcrypt-nodejs')
 const cors = require('cors')
 var knex = require('knex')
 
-const postgres = knex({
-  client: 'pg',
-  connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    password : '',
-    database : 'smart_brain'
-  }
-});
-
-console.log(postgres.select().table('users'))
-
 const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
+
+/* const environment = process.env.NODE_ENV || 'development';    // if something else isn't setting ENV, use development
+const configuration = require('./knexfile')[environment];    // require environment's settings from knexfile
+const database = require('knex')(configuration);              // connect to DB via knex using env's settings */
+
+const db = knex({
+  client: 'pg',
+  connection: {
+    host : '127.0.0.1',
+    user : 'postgres',
+    password : 'root',
+    database : 'smart_brain'
+  }
+});
+
+console.log(
+  db.select().table('users')
+    .then(data => {
+      console.log(data)
+    })
+    .catch(console.log)
+)
 
 const database = {
   users:
@@ -51,7 +61,13 @@ const database = {
 }
 
 app.get('/', (req, res) => {
-  res.json(database.users)
+  // res.json(database.users)
+  db.select().table('users')
+    .then(data => {
+      console.log(data)
+      res.json(data)
+    })
+    .catch(console.log)
 })
 
 app.post('/signin', (req, res) => {
@@ -65,19 +81,13 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
   const { email, name, password } = req.body
-  
-  bcrypt.hash(password, null, null, function(err, hash) {
-    console.log(hash)
-  })
-  database.users.push(
-    {
-      id: 125,
-      name,
-      email,
-      entries: 0,
-      joined: new Date()
-    }
-  )
+
+  db('users').insert({
+    name,
+    email,
+    joined: new Date()
+  }).then(console.log)
+
   res.json(database.users[database.users.length-1])
 })
 

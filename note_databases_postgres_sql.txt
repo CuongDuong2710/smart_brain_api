@@ -111,3 +111,5 @@ CREATE TABLE login (
 	hash varchar(100) NOT NULL,
 	email text UNIQUE NOT NULL
 );
+
+INSERT INTO users (name, email, joined) VALUES ('cuong', 'cuong@gmail.com', '2008-01-01 00:00:01')
