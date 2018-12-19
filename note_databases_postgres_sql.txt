@@ -131,3 +131,19 @@ Result {
   rowAsArray: false,
   _getTypeParser: [Function: bound ] }
 
+------- PRINT ERROR IF GMAIL IS EXISTS -----------
+
+  {
+    "name": "error",
+    "length": 273,
+    "severity": "ERROR",
+    "code": "23505",
+    "detail": "Key (email)=(paul@gmail.com) already exists.",
+    "schema": "public",
+    "table": "users",
+    "constraint": "users_email_key",
+    "file": "d:\\pginstaller.auto\\postgres.windows-x64\\src\\backend\\access\\nbtree\\nbtinsert.c",
+    "line": "535",
+    "routine": "_bt_check_unique"
+}
+

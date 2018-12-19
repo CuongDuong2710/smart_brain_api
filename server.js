@@ -85,11 +85,10 @@ app.post('/register', (req, res) => {
       email,
       joined: new Date()
   })
-  .then(response => {
-    console.log('res', res)
-    console.log('response', response)
-    res.json(response)
+  .then(user => {
+    res.json(user[0])
   })
+  .catch(err => res.status(400).json(err))
 })
 
 app.get('/profile/:id', (req, res) => {
