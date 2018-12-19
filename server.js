@@ -22,7 +22,7 @@ const db = knex({
 console.log(
   db.select().table('users')
     .then(data => {
-      console.log(data)
+      // console.log(data)
     })
     .catch(console.log)
 )
@@ -57,10 +57,8 @@ const database = {
 }
 
 app.get('/', (req, res) => {
-  // res.json(database.users)
   db.select().table('users')
     .then(data => {
-      console.log(data)
       res.json(data)
     })
     .catch(console.log)
@@ -93,12 +91,14 @@ app.post('/register', (req, res) => {
 
 app.get('/profile/:id', (req, res) => {
   const { id } = req.params
-  database.users.forEach(user => {
-    if (user.id === id) {
-      res.json(user)
-    }
+  db.select('*').from('users').where({ id })
+    .then(user => {
+      if (user.length)
+        res.json(user[0])
+      else
+        res.status(400).json('no such user')
   })
-  res.status(400).json('no such user')
+  .catch(err => res.status(400).json(err.message))
 })
 
 app.put('/image', (req, res) => {

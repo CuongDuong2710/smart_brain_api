@@ -131,7 +131,7 @@ Result {
   rowAsArray: false,
   _getTypeParser: [Function: bound ] }
 
-------- PRINT ERROR IF GMAIL IS EXISTS -----------
+------- PRINT ERROR IF EMAIL IS EXISTS -----------
 
   {
     "name": "error",
@@ -147,3 +147,17 @@ Result {
     "routine": "_bt_check_unique"
 }
 
+------- RETURN STATUS 200 IF ARRAY IS EMPTY -----------
+
+
+Boolean([])
+true
+Boolean([].length) -> check length
+false
+Boolean(['a'].length)
+true
+
+localhost:3000/profile/73 -> status: 200 OK
+
+_ Although database not have user id 73 and return [] empty array -> status is still 200 OK
+_ Check length array instead of array
