@@ -113,3 +113,21 @@ CREATE TABLE login (
 );
 
 INSERT INTO users (name, email, joined) VALUES ('cuong', 'cuong@gmail.com', '2008-01-01 00:00:01')
+
+{
+	"email": "john@gmail.com",
+	"password": "1234",
+	"name": "Anne"
+}
+
+Result {
+  command: 'INSERT',
+  rowCount: 1,
+  oid: 0,
+  rows: [],
+  fields: [],
+  _parsers: [],
+  RowCtor: null,
+  rowAsArray: false,
+  _getTypeParser: [Function: bound ] }
+

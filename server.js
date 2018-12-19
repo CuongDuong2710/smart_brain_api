@@ -9,10 +9,6 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-/* const environment = process.env.NODE_ENV || 'development';    // if something else isn't setting ENV, use development
-const configuration = require('./knexfile')[environment];    // require environment's settings from knexfile
-const database = require('knex')(configuration);              // connect to DB via knex using env's settings */
-
 const db = knex({
   client: 'pg',
   connection: {
@@ -82,13 +78,18 @@ app.post('/signin', (req, res) => {
 app.post('/register', (req, res) => {
   const { email, name, password } = req.body
 
-  db('users').insert({
-    name,
-    email,
-    joined: new Date()
-  }).then(console.log)
-
-  res.json(database.users[database.users.length-1])
+  db('users')
+    .returning('*')
+    .insert({
+      name,
+      email,
+      joined: new Date()
+  })
+  .then(response => {
+    console.log('res', res)
+    console.log('response', response)
+    res.json(response)
+  })
 })
 
 app.get('/profile/:id', (req, res) => {
