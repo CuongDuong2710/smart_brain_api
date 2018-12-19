@@ -96,7 +96,7 @@ app.get('/profile/:id', (req, res) => {
       if (user.length)
         res.json(user[0])
       else
-        res.status(400).json('no such user')
+        throw new Error('Could not find that user')
   })
   .catch(err => res.status(400).json(err.message))
 })
