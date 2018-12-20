@@ -82,34 +82,38 @@ app.post('/register', (req, res) => {
       name,
       email,
       joined: new Date()
-  })
-  .then(user => {
-    res.json(user[0])
-  })
-  .catch(err => res.status(400).json(err))
+    })
+    .then(user => {
+      res.json(user[0])
+    })
+    .catch(err => res.status(400).json(err))
 })
 
 app.get('/profile/:id', (req, res) => {
   const { id } = req.params
-  db.select('*').from('users').where({ id })
+  db.select('*')
+    .from('users')
+    .where({ id })
     .then(user => {
       if (user.length)
         res.json(user[0])
       else
         throw new Error('Could not find that user')
-  })
-  .catch(err => res.status(400).json(err.message))
+    })
+    .catch(err => res.status(400).json(err.message))
 })
 
 app.put('/image', (req, res) => {
   const { id } = req.body
-  database.users.forEach(user => {
-    if (user.id === id) {
-      user.entries++;
-      res.json(user.entries)
-    }
-  })
-  res.status(400).json('no such user')
+
+  db('users')
+    .where('id', '=', id)
+    .increment('entries', 1)
+    .returning('entries')
+    .then(entries => {
+      res.json(entries[0])
+    })
+    .catch(err => res.status(400).json('unable to get entries'))
 })
 
 app.listen(3000, () => {
