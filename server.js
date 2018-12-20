@@ -27,35 +27,6 @@ console.log(
     .catch(console.log)
 )
 
-const database = {
-  users:
-  [
-    {
-      id: 123,
-      name: 'John',
-      email: 'john@gmail.com',
-      password: 'root',
-      entries: 0,
-      joined: new Date()
-    },
-    {
-      id: 124,
-      name: 'James',
-      email: 'james@gmail.com',
-      password: 'root',
-      entries: 0,
-      joined: new Date()
-    }
-  ],
-  login: [
-    {
-      id: '987',
-      hash: '',
-      email: 'john@gmail.com'
-    }
-  ]
-}
-
 app.get('/', (req, res) => {
   db.select().table('users')
     .then(data => {
