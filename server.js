@@ -40,7 +40,8 @@ app.get('/', (req, res) => {
     .catch(console.log)
 })
 
-app.post('/signin', (req, res) => { signin.handleSignIn(req, res, db, bcrypt) })
+app.post('/signin', signin.handleSignIn(db, bcrypt))
+// (property) handleSignIn: (db: any, bcrypt: any) => (req: any, res: any) => void
 
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
 
