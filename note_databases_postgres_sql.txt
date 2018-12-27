@@ -161,3 +161,6 @@ localhost:3000/profile/73 -> status: 200 OK
 
 _ Although database not have user id 73 and return [] empty array -> status is still 200 OK
 _ Check length array instead of array
+
+------- ENVIRONMENT VARIABLE -----------
+env PORT=3000 node server1.js
