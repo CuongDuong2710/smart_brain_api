@@ -1,0 +1,74 @@
+$ heroku login
+heroku: Press any key to open up the browser to login or q to exit:
+Logging in... done
+Logged in as cuongduongngocquoc@gmail.com
+
+$ heroku create
+Creating app... done, ⬢ young-atoll-45616
+https://young-atoll-45616.herokuapp.com/ | https://git.heroku.com/young-atoll-45616.git
+
+cuong.duong@CuongDuong MINGW64 /d/Auvenir/udemy_complete_web/smart_brain_api (master)
+$ git remote -v
+heroku  https://git.heroku.com/young-atoll-45616.git (fetch)
+heroku  https://git.heroku.com/young-atoll-45616.git (push)
+test    git@github.com:cuongdnq2710/smart_brain_api.git (fetch)
+test    git@github.com:cuongdnq2710/smart_brain_api.git (push)
+
+> git push heroku master
+> heroku logs --tail
+
+
+$ heroku pg:info
+=== DATABASE_URL
+Plan:                  Hobby-dev
+Status:                Available
+Connections:           0/20
+PG Version:            10.6
+Created:               2018-12-27 10:07 UTC
+Data Size:             7.6 MB
+Tables:                0
+Rows:                  0/10000 (In compliance)
+Fork/Follow:           Unsupported
+Rollback:              Unsupported
+Continuous Protection: Off
+Add-on:                postgresql-shaped-18556
+
+
+$ heroku addons
+
+Add-on                                       Plan       Price  State
+───────────────────────────────────────────  ─────────  ─────  ───────
+heroku-postgresql (postgresql-shaped-18556)  hobby-dev  free   created
+ └─ as DATABASE
+
+The table above shows add-ons and the attachments to the current app (young-atoll-45616) or other apps.
+
+
+
+$ heroku pg:psql
+--> Connecting to postgresql-shaped-18556
+psql (11.1, server 10.6 (Ubuntu 10.6-1.pgdg16.04+1))
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+young-atoll-45616::DATABASE=>
+
+
+young-atoll-45616::DATABASE=> \d
+
+
+
+at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
+2018-12-27T10:17:59.913528+00:00 app[web.1]: errno: 'ENOTFOUND',
+2018-12-27T10:17:59.913530+00:00 app[web.1]: code: 'ENOTFOUND',
+2018-12-27T10:17:59.913531+00:00 app[web.1]: syscall: 'getaddrinfo',
+2018-12-27T10:17:59.913533+00:00 app[web.1]: hostname: 'postgresql-shaped-18556',
+2018-12-27T10:17:59.913535+00:00 app[web.1]: host: 'postgresql-shaped-18556',
+2018-12-27T10:17:59.913537+00:00 app[web.1]: port: 5432 }
+
+$ heroku config
+=== young-atoll-45616 Config Vars
+DATABASE_URL: postgres://xvpybibjggrtwl:e1119e20782c0c26daaad816d2b096878cfd0e038c35646a61f5d9fbae44d9dd@ec2-174-129-25-182.compute-1.amazonaws.com:5432/dbrvuv7ifgu9o8
