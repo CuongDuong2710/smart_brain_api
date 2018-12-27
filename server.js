@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'postgresql-shaped-18556', // > heroku addons
     user : 'postgres',
     password : 'root',
     database : 'smart_brain'
