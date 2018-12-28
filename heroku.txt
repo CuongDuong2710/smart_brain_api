@@ -72,3 +72,6 @@ at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
 $ heroku config
 === young-atoll-45616 Config Vars
 DATABASE_URL: postgres://xvpybibjggrtwl:e1119e20782c0c26daaad816d2b096878cfd0e038c35646a61f5d9fbae44d9dd@ec2-174-129-25-182.compute-1.amazonaws.com:5432/dbrvuv7ifgu9o8
+
+
+$ heroku open

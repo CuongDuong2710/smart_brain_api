@@ -31,11 +31,12 @@ console.log(
 )
 
 app.get('/', (req, res) => {
-  db.select().table('users')
+  /* db.select().table('users')
     .then(data => {
       res.json(data)
     })
-    .catch(console.log)
+    .catch(console.log) */
+  res.send('it is working!')
 })
 
 app.post('/signin', signin.handleSignIn(db, bcrypt))
