@@ -100,3 +100,7 @@ young-atoll-45616::DATABASE=> SELECT * FROM users;
  id | name |     email     | entries |         joined
 ----+------+---------------+---------+-------------------------
   1 | jan  | jan@gmail.com |       1 | 2018-12-28 08:01:30.658
+  
+  
+--- ADD REMOTE HEROKU --- 
+> heroku git:remote -a smartbrainweb
