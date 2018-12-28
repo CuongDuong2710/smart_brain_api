@@ -46,6 +46,7 @@ The table above shows add-ons and the attachments to the current app (young-atol
 
 
 $ heroku pg:psql
+
 --> Connecting to postgresql-shaped-18556
 psql (11.1, server 10.6 (Ubuntu 10.6-1.pgdg16.04+1))
 WARNING: Console code page (437) differs from Windows code page (1252)
@@ -75,3 +76,7 @@ DATABASE_URL: postgres://xvpybibjggrtwl:e1119e20782c0c26daaad816d2b096878cfd0e03
 
 
 $ heroku open
+
+https://young-atoll-45616.herokuapp.com
+
+https://git.heroku.com/young-atoll-45616.git
