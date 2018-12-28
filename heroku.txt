@@ -1,12 +1,19 @@
+_ Target: deploy backend & database into HEROKU
+
+--- LOGIN ---
 $ heroku login
 heroku: Press any key to open up the browser to login or q to exit:
 Logging in... done
 Logged in as cuongduongngocquoc@gmail.com
 
+
+--- CREATE APP ---
 $ heroku create
 Creating app... done, ⬢ young-atoll-45616
 https://young-atoll-45616.herokuapp.com/ | https://git.heroku.com/young-atoll-45616.git
 
+
+--- REMOTE ---
 cuong.duong@CuongDuong MINGW64 /d/Auvenir/udemy_complete_web/smart_brain_api (master)
 $ git remote -v
 heroku  https://git.heroku.com/young-atoll-45616.git (fetch)
@@ -14,10 +21,15 @@ heroku  https://git.heroku.com/young-atoll-45616.git (push)
 test    git@github.com:cuongdnq2710/smart_brain_api.git (fetch)
 test    git@github.com:cuongdnq2710/smart_brain_api.git (push)
 
+--- PUSH SOURCE TO HEROKU GIT ---
 > git push heroku master
+
+
+--- LOGS ---
 > heroku logs --tail
 
 
+--- PSQL info ---
 $ heroku pg:info
 === DATABASE_URL
 Plan:                  Hobby-dev
@@ -34,6 +46,7 @@ Continuous Protection: Off
 Add-on:                postgresql-shaped-18556
 
 
+--- ADDONS ---
 $ heroku addons
 
 Add-on                                       Plan       Price  State
@@ -44,7 +57,7 @@ heroku-postgresql (postgresql-shaped-18556)  hobby-dev  free   created
 The table above shows add-ons and the attachments to the current app (young-atoll-45616) or other apps.
 
 
-
+--- INTO DATABASE TO CREATE TABLE AT HEROKU ---
 $ heroku pg:psql
 
 --> Connecting to postgresql-shaped-18556
@@ -75,8 +88,15 @@ $ heroku config
 DATABASE_URL: postgres://xvpybibjggrtwl:e1119e20782c0c26daaad816d2b096878cfd0e038c35646a61f5d9fbae44d9dd@ec2-174-129-25-182.compute-1.amazonaws.com:5432/dbrvuv7ifgu9o8
 
 
+--- OPENS ---
 $ heroku open
 
 https://young-atoll-45616.herokuapp.com
 
 https://git.heroku.com/young-atoll-45616.git
+
+
+young-atoll-45616::DATABASE=> SELECT * FROM users;
+ id | name |     email     | entries |         joined
+----+------+---------------+---------+-------------------------
+  1 | jan  | jan@gmail.com |       1 | 2018-12-28 08:01:30.658
